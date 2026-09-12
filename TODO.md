@@ -1,7 +1,7 @@
 # 実装ToDo
 
-- [x] タスク1: GitHub Pages デプロイ設計書の作成とTODO更新
-- [x] タスク2: ベースパス対応（vite.config.ts, index.html, ManualModal.tsx, main.tsx, sw.js, manifest.webmanifest）
-- [x] タスク3: GitHub Actions デプロイワークフロー作成 (.github/workflows/deploy.yml)
-- [x] タスク4: ビルド検証 (npm run build 等)
-- [x] タスク5: 最終同期確認・プッシュおよびGitHub Pages有効化手順案内
+- [x] タスク1: 画面白濁原因の調査と対策設計書の作成
+- [ ] タスク2: public/.nojekyll の追加および deploy.yml への gh-pages デプロイステップ追加
+- [ ] タスク3: ローカルでの最新ビルドおよび gh-pages ブランチへの成果物プッシュ
+- [ ] タスク4: main ブランチの更新コミット＆プッシュ
+- [ ] タスク5: 自分自身での実環境接続検証（curl/HTTPによるHTML確認）と完了報告
