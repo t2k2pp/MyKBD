@@ -1,0 +1,6 @@
+{
+  "name": "Studio Synth Workstation",
+  "description": "Standalone Web & PWA synthesizer workstation featuring ultra-low latency audio, 128 GM instruments, 10 drum kits, 4 DSP effects, arpeggiator, lossless WAV recorder, musical scales, and Web MIDI support.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

@@ -1,0 +1,90 @@
+@import "tailwindcss";
+
+@layer base {
+  * {
+    -webkit-tap-highlight-color: transparent;
+    -webkit-touch-callout: none;
+  }
+
+  body {
+    user-select: none;
+    -webkit-user-select: none;
+    overscroll-behavior: none;
+    touch-action: none;
+  }
+}
+
+/* Custom font styles */
+.font-oled {
+  font-family: 'VT323', monospace;
+}
+
+.font-tech {
+  font-family: 'Chakra Petch', sans-serif;
+}
+
+/* Authentic Hardware Chassis Texturing */
+.chassis-texture {
+  background-color: #15171c;
+  background-image: radial-gradient(rgba(255, 255, 255, 0.04) 1px, transparent 1px),
+                    radial-gradient(rgba(0, 0, 0, 0.4) 1px, transparent 1px);
+  background-size: 4px 4px, 4px 4px;
+  background-position: 0 0, 2px 2px;
+}
+
+.chassis-inset {
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.6), inset 0 -1px 1px rgba(255, 255, 255, 0.05);
+}
+
+/* OLED screen authentic glass & glow */
+.oled-bezel {
+  background: #02060a;
+  box-shadow: inset 0 2px 6px #000, 0 1px 0 rgba(255,255,255,0.08);
+}
+
+.oled-text-cyan {
+  color: #00f0ff;
+  text-shadow: 0 0 6px rgba(0, 240, 255, 0.65), 0 0 12px rgba(0, 240, 255, 0.35);
+}
+
+.oled-text-amber {
+  color: #ffb703;
+  text-shadow: 0 0 6px rgba(255, 183, 3, 0.7), 0 0 12px rgba(255, 183, 3, 0.4);
+}
+
+/* Drum Pads 3D tactile styling and lighting */
+.drum-pad-base {
+  background: linear-gradient(145deg, #2a2e37, #1b1d24);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5), inset 0 1px 1px rgba(255, 255, 255, 0.12), inset 0 -2px 4px rgba(0, 0, 0, 0.8);
+  transition: transform 0.04s ease-out, box-shadow 0.04s ease-out;
+}
+
+.drum-pad-pressed {
+  transform: translateY(2px) scale(0.985);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.8), inset 0 2px 5px rgba(0, 0, 0, 0.9);
+}
+
+/* Keybed Styles */
+.white-key {
+  background: linear-gradient(to bottom, #ffffff 0%, #f4f6f9 88%, #d8dde6 100%);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.4), inset 0 1px 0 #ffffff, inset -1px 0 2px rgba(0, 0, 0, 0.15), inset 1px 0 2px rgba(255, 255, 255, 0.8);
+  border-radius: 0 0 5px 5px;
+}
+
+.white-key-pressed {
+  background: linear-gradient(to bottom, #e2e8f0 0%, #cbd5e1 90%, #94a3b8 100%) !important;
+  transform: translateY(3px) !important;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.6), inset 0 3px 6px rgba(0, 0, 0, 0.25) !important;
+}
+
+.black-key {
+  background: linear-gradient(to bottom, #23272f 0%, #16181d 75%, #0d0e11 100%);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.7), inset 0 1px 1px rgba(255, 255, 255, 0.2), inset -1px 0 2px rgba(0, 0, 0, 0.6), inset 1px 0 2px rgba(255, 255, 255, 0.1);
+  border-radius: 0 0 4px 4px;
+}
+
+.black-key-pressed {
+  background: linear-gradient(to bottom, #101114 0%, #08090a 100%) !important;
+  transform: translateY(3px) !important;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.9), inset 0 2px 4px rgba(0, 0, 0, 0.7) !important;
+}

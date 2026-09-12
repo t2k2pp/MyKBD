@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>STUDIO SYNTH WORKSTATION - 操作マニュアル & チュートリアル</title>
+  <style>
+    :root {
+      --bg-color: #0b0d11;
+      --card-bg: #14171e;
+      --card-border: #252a36;
+      --text-main: #e2e8f0;
+      --text-sub: #94a3b8;
+      --accent-red: #ef233c;
+      --accent-cyan: #00f0ff;
+      --accent-purple: #a855f7;
+      --accent-amber: #f59e0b;
+      --accent-green: #10b981;
+      --code-bg: #07080a;
+    }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      background-color: var(--bg-color);
+      color: var(--text-main);
+      line-height: 1.65;
+      padding: 24px 16px 80px;
+    }
+    .container {
+      max-width: 920px;
+      margin: 0 auto;
+    }
+    header {
+      border-bottom: 2px solid var(--accent-red);
+      padding-bottom: 20px;
+      margin-bottom: 32px;
+    }
+    .badge {
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 700;
+      padding: 3px 8px;
+      border-radius: 4px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 8px;
+    }
+    .badge-red { background: rgba(239, 35, 60, 0.2); color: #ff6b7e; border: 1px solid var(--accent-red); }
+    .badge-cyan { background: rgba(0, 240, 255, 0.15); color: var(--accent-cyan); border: 1px solid var(--accent-cyan); }
+    .badge-purple { background: rgba(168, 85, 247, 0.2); color: #d8b4fe; border: 1px solid var(--accent-purple); }
+    .badge-amber { background: rgba(245, 158, 11, 0.2); color: #fcd34d; border: 1px solid var(--accent-amber); }
+
+    h1 {
+      font-size: 28px;
+      color: #ffffff;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      margin-bottom: 8px;
+    }
+    .subtitle {
+      font-size: 14px;
+      color: var(--text-sub);
+    }
+    h2 {
+      font-size: 20px;
+      color: #ffffff;
+      margin: 36px 0 16px;
+      padding-left: 12px;
+      border-left: 4px solid var(--accent-cyan);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    h3 {
+      font-size: 16px;
+      color: #f1f5f9;
+      margin: 20px 0 10px;
+    }
+    p, li {
+      font-size: 14px;
+      color: var(--text-sub);
+      margin-bottom: 12px;
+    }
+    p strong, li strong {
+      color: #ffffff;
+    }
+    ul, ol {
+      padding-left: 20px;
+      margin-bottom: 16px;
+    }
+    li {
+      margin-bottom: 8px;
+    }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 10px;
+      padding: 20px;
+      margin-bottom: 20px;
+    }
+    .grid-2 {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 16px;
+      margin-bottom: 20px;
+    }
+    .key-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 12px 0 20px;
+      font-size: 13px;
+    }
+    .key-table th, .key-table td {
+      border: 1px solid var(--card-border);
+      padding: 8px 12px;
+      text-align: left;
+    }
+    .key-table th {
+      background: #181c25;
+      color: #e2e8f0;
+      font-weight: 600;
+    }
+    .key-table td {
+      background: #0f1117;
+    }
+    kbd {
+      background: #232734;
+      border: 1px solid #3b4254;
+      border-radius: 4px;
+      padding: 2px 6px;
+      font-family: monospace;
+      font-size: 12px;
+      color: #38bdf8;
+      box-shadow: 0 1px 2px rgba(0,0,0,0.5);
+    }
+    .step-box {
+      border-left: 3px solid var(--accent-purple);
+      background: rgba(168, 85, 247, 0.05);
+      padding: 16px 20px;
+      border-radius: 0 8px 8px 0;
+      margin-bottom: 16px;
+    }
+    .step-number {
+      font-weight: 800;
+      color: var(--accent-purple);
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 4px;
+    }
+    .tip-box {
+      border-left: 3px solid var(--accent-green);
+      background: rgba(16, 185, 129, 0.08);
+      padding: 12px 16px;
+      border-radius: 0 6px 6px 0;
+      font-size: 13px;
+      color: #a7f3d0;
+      margin: 16px 0;
+    }
+    .tip-box strong {
+      color: #34d399;
+    }
+    .nav-tabs {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 24px;
+      flex-wrap: wrap;
+    }
+    .nav-tabs a {
+      color: var(--text-sub);
+      text-decoration: none;
+      font-size: 13px;
+      font-weight: 600;
+      padding: 6px 14px;
+      background: #181c25;
+      border: 1px solid var(--card-border);
+      border-radius: 6px;
+      transition: all 0.2s;
+    }
+    .nav-tabs a:hover {
+      background: #242b38;
+      color: #ffffff;
+      border-color: var(--accent-cyan);
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <span class="badge badge-red">Hardware Reference & Tutorial</span>
+      <h1>STUDIO SYNTH WORKSTATION</h1>
+      <p class="subtitle">公式操作マニュアル & 初心者向けステップ・バイ・ステップ音楽制作ガイド</p>
+    </header>
+
+    <div class="nav-tabs">
+      <a href="#quick-start">① 音を鳴らす準備</a>
+      <a href="#ui-overview">② 各セクション解説</a>
+      <a href="#shortcuts">③ PCキーボード対応表</a>
+      <a href="#step-by-step">④ 実践チュートリアル (曲作り)</a>
+      <a href="#advanced">⑤ 上級テクニック & 推奨活用法</a>
+    </div>
+
+    <!-- 1. 音を鳴らす準備 -->
+    <section id="quick-start">
+      <h2>1. 音を鳴らす準備 (クイックスタート)</h2>
+      <div class="card">
+        <ol>
+          <li>
+            <strong>オーディオの有効化</strong>:
+            ブラウザの仕様により初回は無音状態です。画面右上に表示される <span class="badge badge-red">🔊 ENABLE AUDIO</span> ボタンをクリック、または鍵盤・パッドを1回クリックするとオーディオエンジンが起動します。
+          </li>
+          <li>
+            <strong>音量バランスの確認</strong>:
+            最上段の <kbd>VOL</kbd> スライダーが適切な音量になっているか確認します（推奨初期値: 80〜85）。
+          </li>
+          <li>
+            <strong>出力方式の切替 (SPK / LINE)</strong>:
+            上部バー左側のスピーカーマークをクリックすると、<strong>2.5インチ小型コーンスピーカー特有の温かみある音（SPK）</strong> と <strong>フラットで高品位なスタジオモニター出力（LINE）</strong> を瞬時に切り替えられます。
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- 2. 各部操作解説 -->
+    <section id="ui-overview">
+      <h2>2. 各コントロール部の構造と操作方法</h2>
+
+      <div class="grid-2">
+        <div class="card">
+          <span class="badge badge-cyan">PROG & KIT</span>
+          <h3>音色・ドラムキット切替</h3>
+          <ul>
+            <li><strong>PROG (音色選択)</strong>: 左右の <code>‹</code> <code>›</code> ボタンで128種類のGM/シンセプリセットを順送り。中央の表示窓をクリックすると、全カテゴリー一覧からダイレクト選択できます。</li>
+            <li><strong>KIT (ドラム選択)</strong>: 808、909、アコースティック、ジャズ、サイバーなど厳選10キットを切り替えます。</li>
+          </ul>
+        </div>
+
+        <div class="card">
+          <span class="badge badge-purple">RECORDER & TOOLS</span>
+          <h3>録音・スケール・デモ機能</h3>
+          <ul>
+            <li><strong>REC / LOOP</strong>: 演奏をリアルタイムに劣化なしのWAVで録音。ループ再生しながら重ねて練習できます。</li>
+            <li><strong>⬇ EXPORT WAV</strong>: 録音したテイクを16-bit 44.1kHzのマスターWAVとしてワンクリック保存可能。</li>
+            <li><strong>♩ CLICK</strong>: メトロノーム（テンポ同期）のON/OFF。</li>
+            <li><strong>SCALE & CHORD</strong>: 白鍵を弾くだけで指定した調性（ペンタトニック、マイナー等）に自動補正するスケールロックや、ワンフィンガーコード演奏を設定可能。</li>
+            <li><strong>DEMO GROOVES</strong>: プロフェッショナルなデモトラックを試聴可能。</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="grid-2">
+        <div class="card">
+          <span class="badge badge-cyan">OLED & 4 KNOBS</span>
+          <h3>有機EL画面 & リアルタイム・ノブ</h3>
+          <ul>
+            <li><strong>OLED SCREEN</strong>: 現在の音色、BPM、オクターブ、DSP動作状態をリアルタイム表示。クリックすると画面色（シアン/アンバー/グリーン）が変化します。</li>
+            <li><strong>4つのロータリーノブ</strong>: ノブの左側に数値を表示。ノブを上下にドラッグして音色を劇的に変化させます（ダブルクリックでデフォルト値へリセット）。
+              <ul style="margin-top:6px;">
+                <li><strong>CUTOFF / RESONANCE</strong>: フィルターの明るさと鋭さを調整。</li>
+                <li><strong>REVERB / CHORUS</strong>: 空間の広がりや音の厚みを調整。</li>
+              </ul>
+            </li>
+            <li><strong>MODE SYNTH / ENV</strong>: 右端のボタンで「フィルター＆エフェクト」と「ADSRエンベロープ（アタック・ディケイなど）」の操作を切り替えられます。</li>
+          </ul>
+        </div>
+
+        <div class="card">
+          <span class="badge badge-red">JOYSTICK & BUTTONS</span>
+          <h3>PITCH / MOD & コントロール</h3>
+          <ul>
+            <li><strong>PITCH / MOD ジョイスティック</strong>:
+              左右でピッチベンド（±2半音）、上方向でビブラート（モジュレーション）、下方向でフィルターモジュレーションを無段階で付加。指やマウスを離すと中央に戻ります。
+            </li>
+            <li><strong>OCTAVE (- / +)</strong>: 鍵盤のオクターブを上下に変更（PCキー: <kbd>Z</kbd> / <kbd>X</kbd>）。</li>
+            <li><strong>FULL LVL</strong>: 全てのドラムパッドを最大ベロシティ（127）で鳴らすAKAIスタイル機能。</li>
+            <li><strong>REPEAT</strong>: パッドを押し続けるだけで、テンポに合わせた連続連打ビートを自動生成。</li>
+            <li><strong>BANK A / B</strong>: パッドを1〜8番から9〜16番へ切り替え。</li>
+            <li><strong>ARP (アルペジエーター)</strong>: 鍵盤を押さえると分散和音を自動アルペジオ演奏。歯車アイコンで上昇・下降・ランダムや音符の細かさを変更できます。</li>
+            <li><strong>TAP BPM</strong>: リズムに合わせてクリックすることで演奏テンポ（BPM）を直感設定。</li>
+            <li><strong>PANIC</strong>: 音が鳴り止まなくなった際に全発音を瞬時に遮断。</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="card">
+        <span class="badge badge-amber">PADS & KEYBED</span>
+        <h3>ドラムパッド & 25鍵ベロシティ鍵盤</h3>
+        <ul>
+          <li><strong>8つのベロシティ対応パッド</strong>: タッチやクリック、PCキー <kbd>1</kbd>〜<kbd>8</kbd> でキック・スネア・ハイハットなどを直感演奏。</li>
+          <li><strong>25鍵フルサイズ・シンセアクション鍵盤</strong>: 和音（ポリフォニック）演奏に対応。キーヒント表示でPCキーの位置も一目瞭然です。</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- 3. PCキーボードショートカット対応表 -->
+    <section id="shortcuts">
+      <h2>3. PCキーボード操作対応表</h2>
+      <p>外付けMIDIキーボードがなくても、PCのキーボードだけで本格的な両手演奏が可能です。</p>
+
+      <table class="key-table">
+        <thead>
+          <tr>
+            <th style="width: 25%;">機能</th>
+            <th style="width: 35%;">対応キー</th>
+            <th style="width: 40%;">説明</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>白鍵 (ド レ ミ ファ ソ ラ シ ド)</strong></td>
+            <td><kbd>A</kbd> <kbd>S</kbd> <kbd>D</kbd> <kbd>F</kbd> <kbd>G</kbd> <kbd>H</kbd> <kbd>J</kbd> <kbd>K</kbd> <kbd>L</kbd> <kbd>;</kbd> <kbd>'</kbd> <kbd>\</kbd></td>
+            <td>中段キーがピアノの白鍵に対応しています。</td>
+          </tr>
+          <tr>
+            <td><strong>黒鍵 (#系)</strong></td>
+            <td><kbd>W</kbd> <kbd>E</kbd> (C#, D#) / <kbd>T</kbd> <kbd>Y</kbd> <kbd>U</kbd> (F#, G#, A#) / <kbd>O</kbd> <kbd>P</kbd></td>
+            <td>上段キーがピアノの黒鍵に対応しています。</td>
+          </tr>
+          <tr>
+            <td><strong>ドラムパッド (1〜8)</strong></td>
+            <td>数字キー <kbd>1</kbd> 〜 <kbd>8</kbd></td>
+            <td>パッド1(Kick)〜パッド8(High Tom)を直接トリガー。</td>
+          </tr>
+          <tr>
+            <td><strong>オクターブ切替</strong></td>
+            <td><kbd>Z</kbd> (オクターブ下げる) / <kbd>X</kbd> (オクターブ上げる)</td>
+            <td>ベース音域から高音リード音域まで瞬時に移動可能。</td>
+          </tr>
+          <tr>
+            <td><strong>アルペジエーターON/OFF</strong></td>
+            <td><kbd>V</kbd></td>
+            <td>演奏中にアルペジエーターを素早くトグルできます。</td>
+          </tr>
+          <tr>
+            <td><strong>サステイン (音を伸ばす)</strong></td>
+            <td><kbd>Space</kbd> (スペースキー)</td>
+            <td>ピアノのダンパーペダルのように音を長く持続させます。</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- 4. 初心者向け実践チュートリアル -->
+    <section id="step-by-step">
+      <h2>4. 初心者向け実践チュートリアル (曲作りの第一歩)</h2>
+      <p>音楽理論の知識がなくても大丈夫です！以下の5つのステップに沿って操作するだけで、プロフェッショナルなトラックが完成します。</p>
+
+      <!-- STEP 1 -->
+      <div class="step-box">
+        <div class="step-number">STEP 1: テンポとリズムの土台を作る</div>
+        <h3>808ビートとノートリピートでグルーヴを作る</h3>
+        <ol>
+          <li>画面上部中央の <strong>KIT</strong> をクリックし、<code>04: Electronic 808</code>（または <code>05: Classic 909</code>）を選択します。</li>
+          <li>PITCH/MOD右側のボタン群から <span class="badge badge-cyan">REPEAT</span> ボタンをONにします。</li>
+          <li>PCキーの <kbd>4</kbd>（Closed HH）を押し続けてみてください。テンポに合わせて小気味良いハイハットが自動で連打されます！</li>
+          <li>左手で <kbd>4</kbd> をキープしながら、右手でリズムに合わせて <kbd>1</kbd> (Kick) と <kbd>2</kbd> (Snare) を交互にポンポンと叩いてみましょう。これだけで現代的なトラップ・ヒップホップのビートが完成します。</li>
+        </ol>
+      </div>
+
+      <!-- STEP 2 -->
+      <div class="step-box">
+        <div class="step-number">STEP 2: 外さないメロディを作る (スマートスケール)</div>
+        <h3>音楽理論不要！ペンタトニック・スケールロック</h3>
+        <ol>
+          <li>上部バーの <span class="badge badge-purple">SCALE: OFF ⚙</span> をクリックします。</li>
+          <li><strong>Root Note: C</strong>、<strong>Scale Mode: Minor Pentatonic</strong>（または Major Pentatonic）を選び、「ENABLE SCALE LOCK」にチェックを入れます。</li>
+          <li>鍵盤のどのキー（白鍵 <kbd>A</kbd> <kbd>S</kbd> <kbd>D</kbd> <kbd>F</kbd> <kbd>G</kbd>...）を適当に弾いても、決して不協和音にならず、かっこいいアジアン＆ファンク調のメロディになります！</li>
+        </ol>
+      </div>
+
+      <!-- STEP 3 -->
+      <div class="step-box">
+        <div class="step-number">STEP 3: 音色をきらびやかに変身させる (ノブ調整)</div>
+        <h3>CUTOFF と REVERB で音の表情をつける</h3>
+        <ol>
+          <li>PROG を <code>080: Synth Lead 1 (Square)</code> または <code>004: Rhodes EP</code> に設定します。</li>
+          <li>鍵盤を押さえながら、上の <strong>CUTOFF</strong> ダイヤルを下にドラッグして「40」あたりまで絞ってみましょう。音がモコモコと暖かくなります。</li>
+          <li>そこから勢いよく上へドラッグ（「110〜127」）すると、クラブサウンドのようなフィルターオープンの快感が得られます。</li>
+          <li>隣の <strong>REVERB</strong> ダイヤルを「60〜80」まで上げると、まるで大聖堂や大きなホールで演奏しているような美しい残響が加わります。</li>
+        </ol>
+      </div>
+
+      <!-- STEP 4 -->
+      <div class="step-box">
+        <div class="step-number">STEP 4: アルペジエーターで疾走感を出す</div>
+        <h3>指1本〜和音を押さえるだけでフレーズが自動疾走</h3>
+        <ol>
+          <li>コントロールボタンの <span class="badge badge-red">ARP</span> ボタンをONにします（キーボードの <kbd>V</kbd> でも可）。</li>
+          <li>鍵盤の <kbd>A</kbd> と <kbd>D</kbd> と <kbd>G</kbd>（ド・ミ・ソ）を同時に押し続けてみてください。</li>
+          <li>流れるような美しいアルペジオ・メロディがテンポ同期でエンドレスに鳴り響きます。</li>
+          <li>左側のジョイスティックを上下に動かすと、フレーズに生き生きとしたビブラートがかかります！</li>
+        </ol>
+      </div>
+
+      <!-- STEP 5 -->
+      <div class="step-box">
+        <div class="step-number">STEP 5: あなたの演奏を録音して作品にする</div>
+        <h3>マスターWAVレコーディング & ループ再生</h3>
+        <ol>
+          <li>上部バーの <span class="badge badge-red">● REC</span> をクリックすると、カウントと同時に録音が開始されます。</li>
+          <li>ステップ1〜4で試したビートやフレーズを自由に演奏しましょう！</li>
+          <li>もう一度ボタン（<kbd>STOP</kbd>）を押して録音を終了します。</li>
+          <li><span class="badge badge-cyan">▶ LOOP</span> を押すと、いま演奏したフレーズがそのままBGMとしてループ再生されます。その上にさらに新しいソロを重ねて楽しめます。</li>
+          <li>満足のいくテイクが録れたら、<span class="badge badge-cyan">⬇ EXPORT WAV</span> をクリック。高音質なWAVファイルがあなたのPCやスマホに即座に保存されます！</li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- 5. 上級テクニック & 推奨活用法 -->
+    <section id="advanced">
+      <h2>5. 上級テクニック & 推奨ハードウェア活用法</h2>
+
+      <div class="card">
+        <h3>1. USB / Bluetooth MIDIキーボードのプラグ＆プレイ</h3>
+        <p>
+          本アプリは <strong>Web MIDI API</strong> に完全対応しています。<br>
+          AKAI MPK mini、KORG microKEY、Novation LaunchkeyなどのMIDIキーボードをPCやMac、iPadにUSBケーブル（またはBluetooth）で接続するだけで、設定不要で自動認識されます。<br>
+          物理鍵盤の打鍵強さ（ベロシティ）やピッチベンドホイール、サステインペダルがそのままダイレクトに反映されます。
+        </p>
+      </div>
+
+      <div class="card">
+        <h3>2. USER PRESETS（お気に入り設定の保存）</h3>
+        <p>
+          納得のいく音色、リバーブ、カットオフ、アルペジオ設定ができたら、上部バーの <span class="badge badge-cyan">💾 USER PRESETS</span> をクリック。<br>
+          「USER 1」〜「USER 8」のいずれかのスロットの「SAVE CURRENT」を押すと、ブラウザ内にあなた専用のカスタムセッティングが永続保存され、いつでも瞬時に呼び出すことができます。
+        </p>
+      </div>
+
+      <div class="card">
+        <h3>3. PWA（プログレッシブWebアプリ）としてのインストール</h3>
+        <p>
+          Chrome、Edge、Safariなどのブラウザメニュー、または右上バーの <strong>INSTALL APP</strong> ボタンからホーム画面やデスクトップにアプリとしてインストールできます。<br>
+          インストール後は完全にオフライン状態でも動作し、アドレスバーのない全画面スタンドアロン・シンセサイザーとして低レイテンシーで快適にご利用いただけます。
+        </p>
+      </div>
+
+      <div class="tip-box">
+        <strong>ワンポイント・アドバイス:</strong><br>
+        音が重なりすぎてクリアにしたいときは、操作ボタンの <kbd>PANIC</kbd> を押すか、各音色の「DECAY / RELEASE」を短めに設定するとタイトで抜けの良いビートを作ることができます。
+      </div>
+    </section>
+  </div>
+</body>
+</html>
