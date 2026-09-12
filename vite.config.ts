@@ -5,25 +5,27 @@ import {defineConfig} from 'vite';
 import {VitePWA} from 'vite-plugin-pwa';
 
 export default defineConfig(() => {
+  const base = process.env.BASE_URL || '/MyKBD/';
   return {
+    base,
     plugins: [
       react(),
       tailwindcss(),
       VitePWA({
         registerType: 'autoUpdate',
         manifest: {
-          id: '/',
+          id: base,
           name: 'MPK Mini Play MK3 Web Edition',
           short_name: 'MPK Mini',
           description: 'Standalone Web & PWA recreation of the Akai MPK Mini Play MK3 featuring ultra-low latency audio, 128 GM sounds, 10 drum kits, 4 DSP effects, arpeggiator, and Web MIDI support.',
           theme_color: '#121316',
           background_color: '#0e0f12',
           display: 'standalone',
-          start_url: '/',
-          scope: '/',
+          start_url: base,
+          scope: base,
           icons: [
             {
-              src: '/icon.svg',
+              src: `${base}icon.svg`,
               sizes: '192x192 512x512',
               type: 'image/svg+xml',
               purpose: 'any',

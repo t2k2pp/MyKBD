@@ -6,7 +6,7 @@ import './index.css';
 // Register Service Worker for offline PWA operation
 if ('serviceWorker' in navigator && process.env.NODE_ENV === 'production') {
   window.addEventListener('load', () => {
-    navigator.serviceWorker.register('/sw.js').catch((err) => {
+    navigator.serviceWorker.register(`${import.meta.env.BASE_URL}sw.js`).catch((err) => {
       console.info('SW registration skipped or failed:', err);
     });
   });

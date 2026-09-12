@@ -8,6 +8,8 @@ interface ManualModalProps {
 export const ManualModal: React.FC<ManualModalProps> = ({ isOpen, onClose }) => {
   if (!isOpen) return null;
 
+  const manualUrl = `${import.meta.env.BASE_URL}manual.html`;
+
   return (
     <div className="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm flex items-center justify-center p-2 sm:p-4">
       <div className="bg-[#101318] border border-gray-700 rounded-2xl w-full max-w-4xl max-h-[90vh] flex flex-col shadow-2xl overflow-hidden">
@@ -21,7 +23,7 @@ export const ManualModal: React.FC<ManualModalProps> = ({ isOpen, onClose }) => 
           </div>
           <div className="flex items-center gap-2">
             <a
-              href="/manual.html"
+              href={manualUrl}
               target="_blank"
               rel="noopener noreferrer"
               className="px-2.5 py-1 rounded bg-[#1e232d] hover:bg-[#282f3c] text-[#00f0ff] border border-[#2d3648] text-xs font-tech font-bold uppercase transition-colors"
@@ -40,7 +42,7 @@ export const ManualModal: React.FC<ManualModalProps> = ({ isOpen, onClose }) => 
         {/* Modal Body: Embedded Manual */}
         <div className="flex-1 w-full bg-[#0b0d11] overflow-hidden">
           <iframe
-            src="/manual.html"
+            src={manualUrl}
             title="User Manual and Tutorial"
             className="w-full h-full border-none"
           />

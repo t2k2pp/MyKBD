@@ -3,15 +3,18 @@
  * Offline Cache & Standalone Synthesizer runtime
  */
 
-const CACHE_NAME = 'studio-synth-workstation-v2';
+const CACHE_NAME = 'studio-synth-workstation-v3';
+const scopeUrl = self.registration ? self.registration.scope : self.location.origin + '/';
+const getPath = (rel) => new URL(rel, scopeUrl).pathname;
+
 const PRECACHE_URLS = [
-  '/',
-  '/index.html',
-  '/manifest.webmanifest',
-  '/icon.svg',
-  '/pwa-192x192.png',
-  '/pwa-512x512.png',
-  '/apple-touch-icon.png'
+  getPath('./'),
+  getPath('index.html'),
+  getPath('manifest.webmanifest'),
+  getPath('icon.svg'),
+  getPath('pwa-192x192.png'),
+  getPath('pwa-512x512.png'),
+  getPath('apple-touch-icon.png')
 ];
 
 self.addEventListener('install', (event) => {
@@ -46,7 +49,7 @@ self.addEventListener('fetch', (event) => {
   if (event.request.mode === 'navigate') {
     event.respondWith(
       fetch(event.request).catch(() => {
-        return caches.match('/index.html') || caches.match('/');
+        return caches.match(getPath('index.html')) || caches.match(getPath('./'));
       })
     );
     return;
